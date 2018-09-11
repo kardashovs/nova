@@ -83,7 +83,11 @@ class Client extends Resource
      */
     public function cards(Request $request)
     {
-        return [];
+        return [
+            new Metrics\NewClients,
+            new Metrics\ProspectsPerDay,
+            new Metrics\ClientStatus,
+        ];
     }
 
     /**
@@ -95,7 +99,7 @@ class Client extends Resource
     public function filters(Request $request)
     {
         return [
-
+            new Filters\ClientStatusType,
         ];
     }
 

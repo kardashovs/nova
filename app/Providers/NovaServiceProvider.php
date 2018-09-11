@@ -43,7 +43,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     {
         Gate::define('viewNova', function ($user) {
             return in_array($user->email, [
-                //
+                'jlohr@turnkeydigital.com',
             ]);
         });
     }
@@ -56,8 +56,9 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     protected function cards()
     {
         return [
-            new Help,
+//            new Help,
             new \Tightenco\NovaReleases\LatestRelease,
+            new \App\Nova\Metrics\NewClients,
         ];
     }
 

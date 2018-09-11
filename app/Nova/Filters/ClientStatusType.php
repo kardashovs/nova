@@ -2,7 +2,7 @@
 
 namespace App\Nova\Filters;
 
-use App\Nova\Client;
+use App\Client;
 use Illuminate\Http\Request;
 use Laravel\Nova\Filters\Filter;
 
@@ -29,6 +29,9 @@ class ClientStatusType extends Filter
      */
     public function options(Request $request)
     {
-        return Client::getStatuses();
+        return [
+            'Active' => 'Active',
+            'Prospect' => 'Prospect',
+        ];
     }
 }

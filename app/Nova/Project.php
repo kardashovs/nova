@@ -47,14 +47,16 @@ class Project extends Resource
     {
         return [
             ID::make()->onlyOnForms(),
-            BelongsTo::make('User')->sortable(),
-            BelongsTo::make('Client')->sortable(),
             Text::make('Project Name'),
+            BelongsTo::make('Client')->sortable(),
+            BelongsTo::make('User')->sortable(),
             Markdown::make('Project Description'),
             Select::make('Project Status')->options(\App\Project::getStatus()),
             Select::make('Project Type')->options(\App\Project::getType())->hideFromIndex(),
             Select::make('Priority')->options(\App\Project::getPriority()),
-            Date::make('Completion Date')->hideFromIndex(),
+            Date::make('Completion Date')->resolveUsing(function ($date) {
+                return $date->format('n-d-Y');
+            })->sortable()->hideFromIndex(),
         ];
     }
 
