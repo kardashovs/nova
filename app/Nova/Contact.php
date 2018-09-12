@@ -48,8 +48,8 @@ class Contact extends Resource
         return [
             ID::make()->onlyOnForms(),
             BelongsTo::make('User')->onlyOnForms(),
-            Text::make('First Name', 'contact_first_name')->onlyOnForms(),
-            Text::make('Last Name', 'contact_last_name')->onlyOnForms(),
+            Text::make('First Name', 'contact_first_name')->onlyOnForms()->rules('required'),
+            Text::make('Last Name', 'contact_last_name')->onlyOnForms()->rules('required'),
             Text::make('Name', 'contact_full_name')->sortable()->exceptOnForms(),
             Text::make('Email', 'contact_email'),
             Text::make('Phone', 'contact_phone'),

@@ -58,7 +58,7 @@ class Client extends Resource
             new Panel('Address Information', $this->addressFields()),
             HasMany::make('Contact')->sortable(),
             HasMany::make('Domain'),
-            HasMany::make('Server')->sortable(),
+            BelongsToMany::make('Server')->sortable(),
             HasMany::make('Project')->sortable(),
             HasOne::make('Bill'),
             Markdown::make('Notes')->hideFromIndex(),
@@ -68,11 +68,11 @@ class Client extends Resource
     protected function addressFields()
     {
         return [
-            Place::make('Address')->rules('required', 'string')->hideFromIndex(),
+            Place::make('Address')->rules('string')->hideFromIndex(),
             Text::make('Address 2')->hideFromIndex(),
-            Text::make('City')->sortable()->rules('required', 'string'),
-            Text::make('State')->sortable()->rules('required', 'string')->hideFromIndex(),
-            Text::make('Zip Code', 'postal_code')->rules('required')->hideFromIndex(),
+            Text::make('City')->sortable()->rules('string'),
+            Text::make('State')->sortable()->rules('string')->hideFromIndex(),
+            Text::make('Zip Code', 'postal_code')->hideFromIndex(),
         ];
     }
 

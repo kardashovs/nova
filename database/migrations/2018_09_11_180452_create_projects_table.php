@@ -18,11 +18,11 @@ class CreateProjectsTable extends Migration
             $table->integer('user_id');
             $table->integer('client_id');
             $table->string('project_name');
-            $table->text('project_description');
+            $table->text('project_description')->nullable();
             $table->string('project_status');
             $table->string('project_type');
             $table->integer('priority');
-            $table->date('completion_date');
+            $table->date('completion_date')->nullable();
             $table->timestamps();
         });
     }

@@ -48,13 +48,13 @@ class Bill extends Resource
             BelongsTo::make('Client'),
             Number::make('Server Cost', 'server_cost', function ($value) {
                 return '$' . number_format($value, 2);
-            })->step(0.01),
-            Select::make('Duration', 'server_payment_duration')->options(\App\Bill::getPaymentDuration())->hideFromIndex(),
+            })->step(0.01)->rules('required'),
+            Select::make('Duration', 'server_payment_duration')->options(\App\Bill::getPaymentDuration())->hideFromIndex()->rules('required'),
             Number::make('Dashboard Cost', 'dashboard_cost', function ($value) {
                 return '$' . number_format($value, 2);
-            })->step(0.01),
-            Select::make('Duration', 'dashboard_payment_duration')->options(\App\Bill::getPaymentDuration())->hideFromIndex(),
-            Select::make('Non-Profit', 'non_profit')->options(\App\Bill::getNonProfit()),
+            })->step(0.01)->rules('required'),
+            Select::make('Duration', 'dashboard_payment_duration')->options(\App\Bill::getPaymentDuration())->hideFromIndex()->rules('required'),
+            Select::make('Non-Profit', 'non_profit')->options(\App\Bill::getNonProfit())->rules('required'),
         ];
     }
 

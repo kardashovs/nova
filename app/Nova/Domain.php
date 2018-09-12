@@ -49,9 +49,9 @@ class Domain extends Resource
         return [
             ID::make()->onlyOnForms(),
             BelongsTo::make('User')->onlyOnForms(),
-            BelongsTo::make('Client')->sortable(),
             Text::make('Domain Name')->sortable()->rules('required', 'string'),
-            Text::make('Registrar', 'domain_company')->sortable()->rules('required', 'string'),
+            BelongsTo::make('Client')->sortable(),
+            Text::make('Registrar', 'domain_company')->sortable(),
             Date::make('Expires')->resolveUsing(function ($date) {
                 return $date->format('n-d-Y');
             })->sortable(),

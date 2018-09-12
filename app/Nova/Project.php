@@ -51,9 +51,9 @@ class Project extends Resource
             BelongsTo::make('Client')->sortable(),
             BelongsTo::make('User')->sortable(),
             Markdown::make('Project Description'),
-            Select::make('Project Status')->options(\App\Project::getStatus()),
-            Select::make('Project Type')->options(\App\Project::getType())->hideFromIndex(),
-            Select::make('Priority')->options(\App\Project::getPriority()),
+            Select::make('Project Status')->options(\App\Project::getStatus())->rules('required'),
+            Select::make('Project Type')->options(\App\Project::getType())->hideFromIndex()->rules('required'),
+            Select::make('Priority')->options(\App\Project::getPriority())->rules('required'),
             Date::make('Completion Date')->resolveUsing(function ($date) {
                 return $date->format('n-d-Y');
             })->sortable()->hideFromIndex(),

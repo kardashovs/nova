@@ -18,11 +18,11 @@ class CreateClientsTable extends Migration
             $table->integer('user_id');
             $table->string('client_name');
             $table->string('client_status');
-            $table->string('address');
+            $table->string('address')->nullable();
             $table->string('address_2')->nullable();
-            $table->string('city');
-            $table->string('state');
-            $table->string('postal_code');
+            $table->string('city')->nullable();
+            $table->string('state')->nullable();
+            $table->string('postal_code')->nullable();
             $table->text('notes')->nullable();
             $table->timestamps();
         });
