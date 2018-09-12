@@ -56,9 +56,10 @@ class Client extends Resource
             Text::make('Name', 'client_name')->sortable()->rules('required', 'string'),
             Select::make('Status', 'client_status')->sortable()->options(\App\Client::getStatus())->rules('required'),
             new Panel('Address Information', $this->addressFields()),
-            BelongsToMany::make('Contact')->sortable(),
+            HasMany::make('Contact')->sortable(),
             HasMany::make('Domain'),
-            BelongsToMany::make('Server')->sortable(),
+            HasMany::make('Server')->sortable(),
+            HasMany::make('Project')->sortable(),
             HasOne::make('Bill'),
             Markdown::make('Notes')->hideFromIndex(),
         ];

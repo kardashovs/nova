@@ -44,7 +44,7 @@ class User extends Resource
     public function fields(Request $request)
     {
         return [
-            ID::make()->sortable()->hideFromDetail(),
+            ID::make()->onlyOnForms(),
 
             Gravatar::make()->hideFromDetail(),
 
